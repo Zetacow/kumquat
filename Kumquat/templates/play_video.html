@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Your Video Library</title>
+    <title>Play Video</title>
     <style>
         body {
             margin: 0;
@@ -30,30 +30,19 @@
             padding: 4rem 2rem;
             background: #222;
         }
-        .library h2 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-        .video-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            justify-content: center;
-            margin-top: 2rem;
-        }
         .video-card {
             background: #181818;
             padding: 2rem;
             border-radius: 8px;
-            width: 250px;
+            width: 800px;
             text-align: center;
             box-shadow: 0 2px 8px rgba(0,0,0,0.2);
             color: #fff;
         }
-        .video-card h3 {
+        .video-card h2 {
             margin: 0 0 1rem 0;
             color: #ff9800;
-            font-size: 1.1rem;
+            font-size: 1.5rem;
         }
         .cta-btn {
             background: #ff9800;
@@ -78,6 +67,11 @@
             color: #aaa;
             font-size: 1rem;
         }
+        video {
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            background: #000;
+        }
     </style>
 </head>
 <body>
@@ -85,16 +79,15 @@
         <h1>Kumquat Video</h1>
     </header>
     <section class="library">
-        <h2>Your Video Library</h2>
-        <div class="video-list">
-            {% for file in files %}
-            <div class="video-card">
-                <h3>{{ file }}</h3>
-                <a href="{{ url_for('play_video', filename=file) }}" class="cta-btn">Play Video</a>
-            </div>
-            {% endfor %}
+        <div class="video-card">
+            <h2>Playing: {{ filename }}</h2>
+            <video width="760" controls autoplay>
+                <source src="{{ url_for('serve_video', filename=filename) }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <br>
+            <a href="{{ url_for('files') }}" class="cta-btn">Back to Files</a>
         </div>
-        <a href="/" class="cta-btn">Back to Home</a>
     </section>
     <footer>
         &copy; 2024 Kumquat Video Service. All rights reserved.
