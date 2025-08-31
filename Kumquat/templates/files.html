@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Your Video Library</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #181818;
+            color: #fff;
+        }
+        header {
+            background: #ff9800;
+            padding: 1.5rem 2rem;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+        }
+        .library {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 2rem;
+            background: #222;
+        }
+        .library h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .video-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        .video-card {
+            background: #181818;
+            padding: 2rem;
+            border-radius: 8px;
+            width: 250px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            color: #fff;
+        }
+        .video-card h3 {
+            margin: 0 0 1rem 0;
+            color: #ff9800;
+            font-size: 1.1rem;
+        }
+        .cta-btn {
+            background: #ff9800;
+            color: #fff;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 2rem;
+        }
+        .cta-btn:hover {
+            background: #e67c00;
+        }
+        footer {
+            text-align: center;
+            padding: 1.5rem 2rem;
+            background: #222;
+            color: #aaa;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Kumquat Video</h1>
+    </header>
+    <section class="library">
+        <h2>Your Video Library</h2>
+        <div class="video-list">
+            {% for file in files %}
+            <div class="video-card">
+                <h3>{{ file }}</h3>
+            </div>
+            {% endfor %}
+        </div>
+        <a href="/" class="cta-btn">Back to Home</a>
+    </section>
+    <footer>
+        &copy; 2024 Kumquat Video Service. All rights reserved.
+    </footer>
+</body>
+</html>
